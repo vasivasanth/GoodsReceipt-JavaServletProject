@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <title>Goods Receipts</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1026cb4533.js" crossorigin="anonymous"></script>
+</head>
+<body>
+ <h1>Goods Receipts</h1>
+ 
+        <a onclick="selectAndDeleteBtn()" id="selectAndDeleteBtn" class="createBtn" style="display: block;">Delete Receipt</a>
+        <a onclick="selectAllDeleteBtn()" id="selectAllDeleteBtn" class="createBtn" style="display: none;">Delete All</a>
+        <a onclick="createBtn()" class="createBtn">Create Receipt</a>
+   <div id="receipt">
+    <table border="1">
+        <thead>
+            <tr class="tableHeader">
+                <th id="select"><input type="checkbox" id="selectAllRow" class="selectAllRow" onclick="selectAll(this)"></th>
+                <th id="th1">S No</th>
+                <th id="th2">Receipt Id</th>
+                <th id="th3">Receipt Date</th>
+                <th id="th4">Vendor</th>
+                <th id="th5">Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    </div>
+    <div id="pagination">
+    </div>
+ 
+    <div id="list-overlay" class="hidden" style="display: none;"></div>
+    <div id="list-popupDialog" class="hidden" style="display: none;">
+        <h1>Goods Receipt</h1>
+        <div id="head" style="display:flex;justify-content: space-between; 
+    align-items: center;">
+            <p id="id"></p>
+            <p id="date"></p>
+            <p id="vendor"></p>
+        </div>
+        <table id="viewTable">
+            <thead>
+                <tr class="table-header">
+                    <th id="viewSno">S No</th>
+                    <th id="viewProduct">Product</th>
+                    <th id="viewEdate">Expiry Date</th>
+                    <th id="viewRq">Received Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="viewTableBody"></tbody>
+        </table>
+    </div>
+       
+       
+       <!-- Select and delete -->
+        <div id="list-d-overlay" class="hidden" style="display: none;"></div>
+        <div id="selectList-d-popupDialog" class="hidden" style="display: none;">
+            <p><span id="deleteReceiptId"></span></p>
+            <div class="list-deletebtns">
+                <button onclick="deleteListYesfn()">
+                    Yes
+                </button>
+                <button onclick="deleteListNofn()">
+                    No
+                </button>
+            </div>
+        </div>    
+    <!-- Delete popup -->
+    <div id="list-d-overlay" class="hidden" style="display: none;"></div>
+    <div id="list-d-popupDialog" class="hidden" style="display: none;">
+       <p>Are you sure you want to Delete this Receipt "<b><span id="deleteLineName"></span></b>"</p>
+         <div class="list-deletebtns">
+             <button onclick="deleteReceipt()">Yes</button>
+             <button onclick="closeDeletePopup1()">No</button>
+         </div>
+    </div>
+    
+    
+    <!-- Create ReceiptForm -->  
+    <div id="goodsReceiptForm" style="display: none;">
+
+        <form class="form" id="receiptAddForm">
+            <h1 id="h1" style="margin-top: 0px; margin-bottom: 0px; ">Goods Receipt</h1>
+
+            <div class="section">
+                <div class="attribute">
+                    <label for="rid">Receipt ID: &nbsp;</label>
+                    <input type="text" id="receiptId" name="rid" required>
+                </div>
+                <div class="attribute">
+                    <label for="rd">Receipt Date:<span class="required">*</span></label>
+                    <input type="date" id="receiptDate" name="rd" required >
+                </div>
+
+            </div>
+            <div class="section section2">
+                <label for="">Vendor:<span class="required">*</span></label>
+                <select class="select" name="" id="selectedVendor" required>
+                    <option value="">--Select--</option>
+                    
+                </select>
+            </div>
+
+            <h3 style="margin-top:0px;"> Line Items</h3>
+
+            <fieldset id="fieldsetLine" class="">
+                <p id="fieldsetLineError" class="fieldsetError" style="display: none;">
+                    Add Atleast One Line Item
+                </p>
+
+                <legend id="lineItemLegend"> <b>Add Line Item</b> </legend>
+                <div class="productOperation" id="">
+
+                    <div class="productSelect " id="errorProductSelect">Product:
+                        <select name="" id="productSelect">
+                            <option value="">-----Select-------</option>
+                            
+                        </select>
+                    </div>
+
+                    <div class="expiryDate">
+                        Expiry Date:<input id="expiryDate" type="date" placeholder="ExpiryDate">
+                    </div>
+                    <div class="quantity" id="rqa">
+                        <span id="dynamicUOM"></span>
+                        Received Quantity:<input id="receivedquantity" type="number">
+                    </div>
+                </div>
+                <div class="button" id="addbtn" style="display: flex;">
+                    <button onclick="addProductRow()">Add</button>
+                    <button onclick="clearProductRow()">Clear</button>
+                </div>
+                <div class="button" id="updatebtn" style="display: none;">
+                    <button onclick="updateProductRow(event)">Update</button>
+                    <button onclick="cancelbtn()">Cancel</button>
+                </div>
+
+                <a onclick="SelectAndDeleteProductBtn()" id="selectAndDeleteProductBtn" class="deleteProductBtn" style="display: block;">Delete Product</a>
+                <a onclick="selectAllProductDeleteBtn()" id="selectAllDeleteProductBtn" class="deleteProductBtn" style="display: none;">Delete All</a>
+
+                <div class="table">
+
+                    <table id="productTable">
+                        <thead>
+                            <tr class="table-header">
+                                <th id="SelectAllProduct" style="border: 1px solid black;padding: 8px;"><input type="checkbox" id="SelectAllProductRow"  onclick="selectAllProduct(this)"></th>
+                                <th id="sno" style="border: 1px solid black;padding: 8px;">S No</th>
+                                <th id="product" style="border: 1px solid black;padding: 8px;">Product</th>
+                                <th id="edate" style="border: 1px solid black;padding: 8px;">Expiry Date</th>
+                                <th id="rq" style="border: 1px solid black;padding: 8px;">Received Quantity</th>
+                                <th id="uom" style="border: 1px solid black;padding: 8px;">UOM</th>
+                                <th id="action" style="border: 1px solid black;padding: 8px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </fieldset>
+
+            <div class="submitbtn">
+                <button onclick="submitData()" id="submitButton" style="display: block;">Submit</button>
+                <button onclick="updateData()" id="updateButton" style="display: none;">Update</button>
+                <button onclick="back()" id="cancelButton" style="margin-left: 10px;">Cancel</button>
+            </div>
+
+        </form>
+
+
+        <!-- Delete row product -->
+        <div id="p-overlay" class="hidden" style="display: none;"></div>
+        <div id="p-popupDialog" class="hidden" style="display: none;">
+            <p>Are you sure you want to Delete  <span id="deleteproductname"></span> </p>
+            <div class="deletebtns">
+                <button onclick="deleteListYesfn()">
+                    Yes
+                </button>
+                <button onclick="deletePoductListNofn()">
+                    No
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Delete popup -->
+        <div id="overlay" class="hidden" style="display: none;"></div>
+        <div id="popupDialog" class="hidden" style="display: none;">
+            <p>Are you sure you want to Delete this Product " <span id="deleterowproductname"></span> "</p>
+            <div class="deletebtns">
+                <button onclick="yesfn()">
+                    Yes
+                </button>
+                <button onclick="nofn()">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+@charset "UTF-8";
+body {
+    font-family: Verdana;
+    background-color: #f4f4f4;
+    position: relative;
+}
+h1 {
+    text-align: center;
+}
+
+/*create button*/
+.createBtn {
+    position: relative;
+    padding: 10px 20px;
+    background-color: rgb(199, 199, 199);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 23px;
+    float: right;
+    right: 10%;
+}
+
+/* Hover effect */
+.createBtn:hover {
+    background-color: rgb(148, 145, 145);
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    display: block;
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-bottom:20px;
+}
+tbody tr td{
+	text-align:center;
+}
+i{
+	margin-right:7px;
+	cursor: pointer;
+}
+
+thead{
+	background-color: rgb(199, 199, 199);
+}
+thead tr th{
+	padding:17px;
+}
+#select{
+	width:3%;
+}
+#th1 {
+    width: 5%;
+}
+
+ #th2{
+    width: 15%;
+}
+ #th3{
+    width: 15%;
+}
+#th4 {
+    width: 20%;
+}
+
+ #th5{
+    width: 5%;
+}
+#th5 i{
+    margin-right:5px ;
+    
+}
+
+
+tbody th,
+tbody td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+
+}
+
+tbody td{
+  background-color: rgb(255, 255, 255);
+}
+
+tbody th {
+    background-color: #717171;
+    font-weight: bold;
+}
+
+
+
+#list-overlay,#list-d-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+#list-popupDialog {
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 1%);
+    padding: 10px;
+    padding-left:30px;
+    padding-right:30px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+}
+
+#list-popupDialog table{
+	margin-top:0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    
+}
+#list-popupDialog table th,#list-popupDialog table td{
+	border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+#viewSno{
+    width: 100px;
+}
+#viewProduct{
+    width: 400px;
+}
+#viewEdate{
+    width: 250px;
+}
+#viewRq{
+    width:350px;
+} 
+
+#head{
+	display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+#pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#pagination a {
+    text-decoration: none;
+    color: #000000; 
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #dee2e6; 
+    border-radius: 5px; 
+    display: inline-block;
+}
+
+
+#pagination a:hover,
+#pagination a:focus {
+    background-color: #e9ecef; 
+    color: #007bff; 
+    border-color: #ced4da; 
+}
+
+#pagination a.active {
+    font-weight: bold;
+    background-color: #007bff; 
+    color: #007bff; 
+    border-color: #007bff; 
+    pointer-events: none; 
+}
+
+/*delete popup css */
+#list-d-popupDialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 70%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.list-deletebtns {
+    display: flex;
+    justify-content: center;
+}
+
+.list-deletebtns button {
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+
+
+
+/*Old code */
+
+#goodsReceiptForm {
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+}
+
+/* form style */
+.form {
+    width: 70%;
+    margin: auto;
+    margin-top: 1px;
+    height: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.form h1 {
+    text-align: center;
+}
+
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+
+.attribute label,
+.section2 label {
+    margin-top: 5px;
+    color: #333;
+}
+
+.attribute input {
+    margin-top: 5px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(55% - 21px);
+
+}
+
+.section2 {
+    margin-top: 20px;
+}
+
+.select {
+    margin-top: 0px;
+    margin-bottom: 35px;
+    margin-right: 8px;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 89.1%;
+}
+
+#productSelect {
+    margin-top: 5px;
+    margin-bottom: 35px;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 16px);
+}
+
+
+/* product operations feildset */
+fieldset {
+    position: relative;
+    border-color: #f4f4f4;
+}
+
+.productOperation {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.productOperation input {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(55% - 16px);
+}
+
+#productSelect {
+    margin-top: 5px;
+    margin-left: 0px;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(70% - 16px);
+}
+
+
+.button {
+    display: flex;
+    justify-content: center;
+
+}
+
+.button button {
+    margin: 10px;
+    cursor: pointer;
+}
+
+#rqa {
+    position: relative;
+}
+
+#productTable{
+	width: 100%;
+    border-collapse: collapse;
+    display: block;
+    overflow-y: auto;
+    max-height: 272px;
+    margin-top: 20px;
+    margin-left:0px;
+    table-layout: fixed;
+    border: 1px solid #ddd;
+}
+
+#productTable thead{
+	position: sticky;
+    top: 0;
+    background-color: #ddd;
+    z-index: 1;
+}
+
+#SelectAllProduct{
+    width: 4%;
+    justify-content: center;
+}
+#SelectAllProduct input{
+    width: 17px;
+}
+
+#sno {
+    width: 10%;
+}
+
+#product {
+    width: 35%;
+}
+
+#edate {
+    width: 15%;
+}
+
+#rq {
+    width: 20%;
+}
+
+#uom {
+    width: 15%;
+}
+
+#action {
+    width: 10%;
+    /* Adjusted from 15% to add up to 100% */
+}
+table-header th,
+productTableBody td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+
+}
+#productName{
+ text-align:left;
+ padding-left:10%;	
+}
+
+table-header th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+.tableHead {
+    background-color: rgb(148, 145, 145);
+    border: none;
+}
+
+#productTable .action {
+    text-align: center;
+}
+
+#productTableBody tr td input {
+    width: calc(100% - 16px);
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.deleteProductBtn{
+    display: block;
+    float: right;
+    padding: 6px 12px;
+    background-color: #c82333;
+    color: #fff;
+    font-weight: bolder;
+    text-decoration: none;
+    border: 1px black; 
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    cursor: pointer;
+    font-size: 19px; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+.deleteProductBtn:hover{
+    background-color: #ff0019;
+}
+#SelectAllProductRow{
+   margin-left: 10px;
+}
+.selectProductRow{
+    margin-left: 10px;
+}
+
+.deletebtns {
+    display: flex;
+    justify-content: center;
+}
+
+.deletebtns button {
+    margin-right: 2%;
+    cursor: pointer;
+}
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+#popupDialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+#selectList-d-popupDialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 70%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.deletebtns {
+    display: flex;
+    justify-content: center;
+}
+
+.deletebtns button {
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+#p-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+#p-popupDialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.submitbtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.submitbtn button {
+    width: 150px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitbtn button:hover {
+    background-color: rgb(148, 145, 145);
+}
+
+.editIcon {
+    opacity: 0.5;
+}
+
+
+/* Errors */
+.qerror::before {
+    content: '*Invalid Quantity';
+    position: absolute;
+    top: -18px;
+    left: 40%;
+    color: rgb(238, 35, 35);
+    font-size: 19px;
+}
+
+.error::before {
+    content: '*Product already added';
+    position: absolute;
+    top: -20px;
+    left: 8%;
+    color: rgb(238, 35, 35);
+    font-size: 19px;
+}
+
+.derror::before {
+    content: '*Invalid Date';
+    position: absolute;
+    top: -16px;
+    color: rgb(238, 35, 35);
+    font-size: 17px;
+}
+
+.qRerror::before {
+    content: '*required';
+    position: absolute;
+    top: -18px;
+    left: 40%;
+    color: rgb(238, 35, 35);
+    font-size: 19px;
+}
+
+.Rerror::before {
+    content: '*Select Product';
+    position: absolute;
+    top: -20px;
+    left: 8%;
+    color: rgb(238, 35, 35);
+    font-size: 19px;
+}
+
+.required {
+    color: red;
+}
+
+.fieldsetError {
+    position: absolute;
+    top: -70px;
+    left: 40%;
+    color: red;
+}
+
+#dynamicUOM{
+    position: absolute;
+    right:10%;
+    top:10px;
+}
+
+/* Animations */
+
+
+.row-delete-animation {
+    color: rgba(255, 0, 0, 0.463);
+    transition: opacity .6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity: 0;
+}
